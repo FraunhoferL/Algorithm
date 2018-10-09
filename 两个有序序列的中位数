@@ -18,7 +18,7 @@ void CreatList(int n,SqList &L)
 	L.length = n;
 }
 //取中位数函数
-int FindMid(SqList L,int &a) 
+int FindMid(SqList L) 
 {
 	int i = (L.length - 1)/2;
 	return L.elem[i];
@@ -49,8 +49,13 @@ int main()
 	cin>>n;
 	SqList LA;
 	SqList LB;
+	SqList LC;
 	CreatList(n,LA);
 	CreatList(n,LB);
+	
+	CombList(LA,LB,LC);
+	int a = FindMid(LC);
+	cout<<a;
 	
 	return 0;
 }
