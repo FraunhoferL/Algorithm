@@ -23,7 +23,25 @@ int FindMid(SqList L,int &a)
 	int i = (L.length - 1)/2;
 	return L.elem[i];
 }
-
+//求并集函数 
+void CombList(SqList LA,SqList LB,SqList &LC)
+{
+	int i = 0,j = 0;
+	LC.length = LA.length + LB.length;
+	for(int k = 0;k < (LC.length/2);k++)
+	{
+		if(i < LA.length && LA.elem[i] < LB.elem[j])
+		{
+			LC.elem[k] = LA.elem[i];
+			i++;
+		}
+		else
+		{
+			LC.elem[k] = LB.elem[j];
+			j++;
+		}
+	}
+}
 
 int main()
 {
