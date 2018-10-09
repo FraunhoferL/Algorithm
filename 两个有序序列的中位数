@@ -1,0 +1,38 @@
+#include<iostream>
+using namespace std;
+
+const int MAXSIZE = 100000;
+//顺序表的定义及建立
+typedef struct
+{
+	int elem[MAXSIZE];
+	int length;
+} SqList;
+
+void CreatList(int n,SqList &L)
+{
+	for(int i = 0;i < n;i++)
+	{
+		cin>>L.elem[i];
+	}
+	L.length = n;
+}
+//取中位数函数
+int FindMid(SqList L,int &a) 
+{
+	int i = (L.length - 1)/2;
+	return L.elem[i];
+}
+
+
+int main()
+{
+	int n;
+	cin>>n;
+	SqList LA;
+	SqList LB;
+	CreatList(n,LA);
+	CreatList(n,LB);
+	
+	return 0;
+}
