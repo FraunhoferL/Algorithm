@@ -1,1 +1,24 @@
+#include<iostream>
+using namespace std;
 
+//动态规划求最大子段和
+int MaxSum(int n, int *a)
+{
+	int sum = 0,b = 0;
+	for(int i = 1;i <= n;i++)
+	{
+		if(b > 0)
+		{
+			b += a[i];
+		}
+		else
+		{
+			b = a[i];
+		}
+		if(b > sum)
+		{
+			sum = b;
+		}
+	}
+	return sum;
+} 
