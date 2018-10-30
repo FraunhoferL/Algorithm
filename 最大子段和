@@ -22,3 +22,19 @@ int MaxSum(int n, int *a)
 	}
 	return sum;
 } 
+
+int main()
+{
+	int n;
+	cin>>n;
+	int a[n];
+	for(int k = 0;k < n;k++)
+	{
+		cin>>a[k];
+	}
+	
+	int ans = MaxSum(n,a);
+	cout<<ans;
+	
+	return 0;
+}
