@@ -1,1 +1,75 @@
+#include<iostream>
+#include<cstring>
+using namespace std;
 
+int d[2001][2001];
+
+//求最小距离
+void dis(string x,string y)
+{
+    if(x.length() > 2000 || y.length() > 2000)
+	{
+		return;
+	}
+	if(x.length() == 0)
+	{
+		cout<<y.length();
+		return;
+	}
+	if(y.length() == 0)
+	{
+		cout<<x.length();
+		return;
+	}
+	int i,j;
+	for(i = 0;i <= x.length();i++)
+	{
+		d[i][0] = i;
+	}
+	for(j = 0;j <= y.length();j++)
+	{
+		d[0][j] = j;
+	}
+	
+	int temp;
+	
+	for(i = 1;i <= x.length();i++)
+	{
+		for(j = 1;j <= y.length();j++)
+		{
+			if(x[i - 1] == y[j - 1])
+			{
+				temp = d[i - 1][j - 1];
+			}
+			else
+			{
+				temp = d[i - 1][j - 1] + 1;
+			}
+			
+			if(d[i][j - 1] <= d[i - 1][j] && d[i][j - 1] + 1 <= temp)
+			{
+				d[i][j] = d[i][j - 1] + 1;
+			}
+			if(d[i - 1][j] <= d[i][j - 1] && d[i - 1][j] + 1 <= temp)
+			{
+				d[i][j] = d[i - 1][j] + 1;
+			}
+			if(temp <= d[i][j - 1] + 1 && temp <= d[i - 1][j] + 1)
+			{
+				d[i][j] = temp;
+			}
+		}
+	}
+	
+	cout<<d[x.length()][y.length()];
+} 
+
+int main()
+{
+	string x;
+	string y;
+	cin>>x;
+	cin>>y;
+	dis(x,y);
+	return 0;
+}
