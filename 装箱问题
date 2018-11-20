@@ -35,7 +35,7 @@ int main()
 	{
 		for(j = 0;j < N;j++)
 		{
-			if(b[j] >= s[j].weight)
+			if(b[j] >= s[i].weight)
 			{
 				if(b[j] == 100)
 				{
@@ -43,6 +43,7 @@ int main()
 				}
 				b[j] = b[j] - s[i].weight;
 				s[i].pos = j + 1;
+				break;
 			}
 		}
 	}
