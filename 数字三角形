@@ -1,1 +1,50 @@
+/*
+给定一个由 n行数字组成的数字三角形如下图所示。试设计一个算法，计算出从三角形 的顶至底的一条路径(每一步可沿左斜线向下或右斜线向下)，使该路径经过的数字总和最大
 
+输入格式:
+输入有n+1行：
+
+第 1 行是数字三角形的行数 n，1<=n<=100。
+
+接下来 n行是数字三角形各行中的数字。所有数字在0..99 之间。
+
+输出格式:
+输出最大路径的值。
+*/
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int n;
+	cin>>n;
+	if(n > 100)
+	{
+		return -1;
+	}
+	int arr[n][n];
+	for(int i = 0;i < n;i++)
+	{
+		for(int j = 0;j <= i;j++)
+		{
+			cin>>arr[i][j];
+		}
+	}
+	
+	for(int k = n - 2;k >= 0;k--)
+	{
+		for(int l = 0;l <= k;l++)
+		{
+			if(arr[k + 1][l] <= arr[k + 1][l + 1])
+			{
+				arr[k][l] += arr[k + 1][l + 1];
+			}
+			else
+			{
+				arr[k][l] += arr[k + 1][l];
+			}
+		}
+	}
+	
+	cout<<arr[0][0];
+}
